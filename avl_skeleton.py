@@ -3,7 +3,7 @@
 #name1    - complete info
 #id2      - 204327258
 #name2    - elhadperl
-
+"""te3ood"""
 ###   DELETE ###
 """ AVL STRUCTURE & STRATEGY:
 *  Done basic code of functions:
