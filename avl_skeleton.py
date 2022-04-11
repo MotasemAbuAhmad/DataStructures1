@@ -1,6 +1,6 @@
-#username - complete info
-#id1      - complete info
-#name1    - complete info
+#username - motasemaaa
+#id1      - 315928804
+#name1    - MotasemAbuAhmad
 #id2      - 204327258
 #name2    - elhadperl
 
@@ -217,7 +217,17 @@ class AVLTreeList(object):
 	def listToArray(self):
 		res = [i for i in range(self.size)]
 		### Travel in tree and then add elements by rank as indexes ###
+		res1 = []
+		return AVLTreeList.ltoa(self, self.root, res1)
+
 		return res
+	"""real l-to-a func"""
+	def ltoa(self, node, res):
+		if node is None:
+			return
+		AVLTreeList.ltoa(self, node.left, res)
+		res.append(node.value)
+		AVLTreeList.ltoa(self, node.right, res)
 
 	"""returns the size of the list 
 
@@ -257,8 +267,25 @@ class AVLTreeList(object):
 	@returns: the first index that contains val, -1 if not found.
 	"""
 	def search(self, val):
-		return None
+		node = self.root
+		return AVLTreeList.goodSearch(self, node, val)
+	"""Real function for search"""
+	"""in-order walk through the tree to find requested value"""
+	def goodSearch(self, node, val):
 
+		if node is None:
+			return -1
+		if node.value == val:
+			return node.rank
+
+		x = AVLTreeList.goodSearch(node.left, val)
+		y = AVLTreeList.goodSearch(node.right, val)
+		if x != -1:
+			return x
+		elif y != -1:
+			return y
+		else:
+			return -1
 
 
 	"""returns the root of the tree representing the list
