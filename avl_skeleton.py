@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # username - complete info
 # id1      - complete info
 # name1    - complete info
@@ -5,6 +6,20 @@
 # name2    - elhadperl
 
 import random
+=======
+#username - motasemaaa
+#id1      - 315928804
+#name1    - MotasemAbuAhmad
+#id2      - 204327258
+#name2    - elhadperl
+
+###   DELETE ###
+""" AVL STRUCTURE & STRATEGY:
+*  Done basic code of functions:
+		* retrieve
+*  Indexes structure ==> using ranks ad keys maintaining functions by update right.size & left.size fields in nodes.
+"""
+>>>>>>> a174287 (Search & List to array)
 
 
 class AVLNode(object):
@@ -142,6 +157,180 @@ class AVLNode(object):
 A class implementing the ADT list, using an AVL tree.
 """
 
+<<<<<<< HEAD
+=======
+class AVLTreeList(object):
+
+	"""
+	Constructor, you are allowed to add more fields.  
+
+	"""
+	def __init__(self):
+		self.root = None
+		self.size = 0
+
+
+
+	"""returns whether the list is empty
+
+	@rtype: bool
+	@returns: True if the list is empty, False otherwise
+	"""
+	def empty(self):
+		if self.size == 0:
+			return True
+		return False
+
+
+	"""retrieves the value of the i'th item in the list
+
+	@type i: int
+	@pre: 0 <= i < self.length()
+	@param i: index in the list
+	@rtype: str
+	@returns: the the value of the i'th item in the list
+	"""
+	def retrieve(self, i):
+		pos = self.root
+		curr_rank = self.root.rank
+		while curr_rank != i:
+			if i < curr_rank:
+				pos = pos.getLeft()
+			else:
+				pos = pos.getRight()
+		return curr_rank
+
+	"""inserts val at position i in the list
+
+	@type i: int
+	@pre: 0 <= i <= self.length()
+	@param i: The intended index in the list to which we insert val
+	@type val: str
+	@param val: the value we inserts
+	@rtype: list
+	@returns: the number of rebalancing operation due to AVL rebalancing
+	"""
+	def insert(self, i, val):
+		return -1
+
+
+	"""deletes the i'th item in the list
+
+	@type i: int
+	@pre: 0 <= i < self.length()
+	@param i: The intended index in the list to be deleted
+	@rtype: int
+	@returns: the number of rebalancing operation due to AVL rebalancing
+	"""
+	def delete(self, i):
+		return -1
+
+
+	"""returns the value of the first item in the list
+
+	@rtype: str
+	@returns: the value of the first item, None if the list is empty
+	"""
+	def first(self):
+		return None
+
+	"""returns the value of the last item in the list
+
+	@rtype: str
+	@returns: the value of the last item, None if the list is empty
+	"""
+	def last(self):
+		return None
+
+	"""returns an array representing list 
+
+	@rtype: list
+	@returns: a list of strings representing the data structure
+	"""
+	def listToArray(self):
+		res = [i for i in range(self.size)]
+		### Travel in tree and then add elements by rank as indexes ###
+		res1 = []
+		return AVLTreeList.ltoa(self, self.root, res1)
+
+		return res
+	"""real l-to-a func"""
+	def ltoa(self, node, res):
+		if node is None:
+			return
+		AVLTreeList.ltoa(self, node.left, res)
+		res.append(node.value)
+		AVLTreeList.ltoa(self, node.right, res)
+
+	"""returns the size of the list 
+
+	@rtype: int
+	@returns: the size of the list
+	"""
+	def length(self):
+		return self.size
+
+	"""splits the list at the i'th index
+
+	@type i: int
+	@pre: 0 <= i < self.length()
+	@param i: The intended index in the list according to whom we split
+	@rtype: list
+	@returns: a list [left, val, right], where left is an AVLTreeList representing the list until index i-1,
+	right is an AVLTreeList representing the list from index i+1, and val is the value at the i'th index.
+	"""
+	def split(self, i):
+		return None
+
+	"""concatenates lst to self
+
+	@type lst: AVLTreeList
+	@param lst: a list to be concatenated after self
+	@rtype: int
+	@returns: the absolute value of the difference between the height of the AVL trees joined
+	"""
+	def concat(self, lst):
+		return None
+
+	"""searches for a *value* in the list
+
+	@type val: str
+	@param val: a value to be searched
+	@rtype: int
+	@returns: the first index that contains val, -1 if not found.
+	"""
+	def search(self, val):
+		node = self.root
+		return AVLTreeList.goodSearch(self, node, val)
+	"""Real function for search"""
+	"""in-order walk through the tree to find requested value"""
+	def goodSearch(self, node, val):
+
+		if node is None:
+			return -1
+		if node.value == val:
+			return node.rank
+
+		x = AVLTreeList.goodSearch(node.left, val)
+		y = AVLTreeList.goodSearch(node.right, val)
+		if x != -1:
+			return x
+		elif y != -1:
+			return y
+		else:
+			return -1
+
+
+	"""returns the root of the tree representing the list
+
+	@rtype: AVLNode
+	@returns: the root, None if the list is empty
+	"""
+	def getRoot(self):
+		"""if self.empty():
+			return None"""
+		return self.root
+>>>>>>> a174287 (Search & List to array)
 
 class AVLTreeList(object):
     """
@@ -500,8 +689,22 @@ class AVLTreeList(object):
     @returns: a list of strings representing the data structure
     """
 
-    def listToArray(self):
-        return res
+	def listToArray(self):
+		res = [i for i in range(self.size)]
+		### Travel in tree and then add elements by rank as indexes ###
+		res1 = []
+		return AVLTreeList.ltoa(self, self.root, res1)
+
+		return res
+
+	"""real l-to-a func"""
+
+	def ltoa(self, node, res):
+		if node is None:
+			return
+		AVLTreeList.ltoa(self, node.left, res)
+		res.append(node.value)
+		AVLTreeList.ltoa(self, node.right, res)
 
     """returns the size of the list 
 
@@ -544,8 +747,28 @@ class AVLTreeList(object):
     @returns: the first index that contains val, -1 if not found.
     """
 
-    def search(self, val):
-        return None
+	def search(self, val):
+		node = self.root
+		return AVLTreeList.goodSearch(self, node, val)
+
+	"""Real function for search"""
+	"""in-order walk through the tree to find requested value"""
+
+	def goodSearch(self, node, val):
+
+		if node is None:
+			return -1
+		if node.value == val:
+			return node.rank
+
+		x = AVLTreeList.goodSearch(node.left, val)
+		y = AVLTreeList.goodSearch(node.right, val)
+		if x != -1:
+			return x
+		elif y != -1:
+			return y
+		else:
+			return -1
 
     """returns the root of the tree representing the list
 
